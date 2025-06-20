@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Auto Arremate® / Arremaq 3.0 - Trilha de Aprendizado Unificada</title>
+    <!-- Google Fonts (Consolidado) -->
+    <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- AOS (Animate On Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* * =============================================
+         * CSS UNIFICADO E OTIMIZADO
+         * =============================================
+         */
+
+        /* Variáveis CSS (Paleta de Cores & Fontes) - Consolidadas */
+        :root {
+            /* Cores Auto Arremate */
+            --aa-green: #10B981;
+            --aa-dark-blue: #1A2238;
+            --aa-light-gray: #D1D5DB;
+            --aa-medium-gray: #6B7280;
+            --aa-white: #F9FAFB;
+            --aa-black: #0D101A;
+            --aa-green-darker: #059669;
+            --aa-green-text-dark-theme: #34D399;
+            --aa-green-lighter: #A7F3D0;
+            --aa-green-pastel: #F0FDF4;
+            --aa-dark-blue-lighter: #2E3A59;
+            --aa-green-darkest: #047857;
+
+            /* Cores Arremaq */
+            --arremaq-orange: #F97316;
+            --arremaq-orange-darker: #C2410C;
+            --arremaq-orange-text-dark-theme: #FDBA74;
+            --arremaq-orange-lighter: #FFEDD5;
+            --arremaq-orange-pastel: #FFF7ED;
+            --arremaq-orange-darkest: #9A3412;
+
+            /* Fontes */
+            --font-headings-cover: 'Manrope', sans-serif;
+            --font-body-cover: 'Manrope', sans-serif;
+            --font-primary-portal: 'Manrope', sans-serif;
+            --font-headings-portal: 'Sora', sans-serif;
+
+            /* Fundos */
+            --bg-main-light: linear-gradient(135deg, var(--aa-green-pastel) 0%, #F3F4F6 100%);
+            --bg-main-dark: linear-gradient(135deg, var(--aa-black) 0%, var(--aa-dark-blue) 100%);
+            --bg-content-light-portal: #FFFFFF;
+            --bg-content-dark-portal: rgba(30, 41, 59, 0.95);
+            --bg-cards-section-light: linear-gradient(180deg, #F9FAFB 0%, #F3F4F6 100%);
+            --bg-cards-section-dark: linear-gradient(180deg, #111827 0%, #1F2937 100%);
+
+            /* Textos */
+            --text-headings-light-portal: var(--aa-dark-blue);
+            --text-headings-dark-portal: var(--aa-green-text-dark-theme);
+            --text-body-light-portal: #374151;
+            --text-body-dark-portal: #D1D5DB;
+            --text-muted-light-portal: #6B7280;
+            --text-muted-dark-portal: #9CA3AF;
+            --text-headings-dark-arremaq: var(--arremaq-orange-lighter);
+            
+            /* Bordas */
+            --border-color-light-portal: #E5E7EB;
+            --border-color-dark-portal: #374151;
+
+            /* Sombras */
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.18), 0 4px 6px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.25), 0 8px 10px rgba(0, 0, 0, 0.15);
+            --shadow-glow-green: 0 0 15px rgba(16, 185, 129, 0.6), 0 0 30px rgba(16, 185, 129, 0.3);
+
+            /* Raios de Borda */
+            --radius-lg: 0.9rem;
+            --radius-xl: 1.5rem;
+            --radius-full: 9999px;
+            --radius-card-portal: 1.8rem;
+            --radius-button-portal: 1rem;
+
+            /* Transições */
+            --transition-main: .4s cubic-bezier(.25, .8, .25, 1);
+        }
+
+        /* Estilos Globais e Tema Escuro */
+        html { scroll-behavior: smooth; font-size: 91%; }
+        body { margin: 0; font-family: var(--font-body-cover); background: var(--bg-main-light); color: var(--text-body-light-portal); overflow-x: hidden; min-height: 100vh; line-height: 1.7; }
+        html[data-theme='dark'] body { background: var(--bg-main-dark); color: var(--text-body-dark-portal); }
+        .hidden { display: none !important; }
+        .emoji-original-color { -webkit-text-fill-color: initial; text-fill-color: initial; background: none; display: inline-block; text-shadow: none; }
+        .text-aa-green-darker { color: var(--aa-green-darker) !important; }
+        html[data-theme='dark'] .text-aa-green-darker { color: var(--aa-green-text-dark-theme) !important; }
+        .text-arremaq-orange-darker { color: var(--arremaq-orange-darker) !important; }
+        html[data-theme='dark'] .text-arremaq-orange-darker { color: var(--arremaq-orange-text-dark-theme) !important; }
+
+        /* Estilos de Seção de Capa */
+        .capa-section { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; padding: clamp(1.2rem, 4.8vw, 2.4rem); text-align: center; position: relative; background: linear-gradient(60deg, var(--arremaq-orange-pastel) 0%, var(--arremaq-orange-lighter) 15%, var(--aa-shiny-gray-light) 35%, var(--aa-green-lighter) 55%, var(--aa-shiny-gray-light) 75%, var(--aa-green-pastel) 90%, var(--arremaq-orange-pastel) 100%); background-size: 300% 300%; animation: backgroundGradientAnimation 20s ease infinite alternate; overflow: hidden; }
+        html[data-theme='dark'] .capa-section { background: linear-gradient(60deg, var(--arremaq-orange-darkest) 0%, var(--arremaq-orange-darker) 15%, #4B5563 35%, var(--aa-dark-blue) 55%, #4B5563 75%, var(--aa-green-darkest) 90%, var(--arremaq-orange-darkest) 100%); background-size: 300% 300%; animation: backgroundGradientAnimation 20s ease infinite alternate; }
+        @keyframes backgroundGradientAnimation { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        .logos-container { display: flex; justify-content: center; align-items: center; gap: 2rem; margin-bottom: 2rem; }
+        .playbook-logo { width: 200px; max-width: 48%; height: auto; filter: drop-shadow(0 0.8rem 1.5rem rgba(0,0,0,0.25)); animation: logo-float 3s ease-in-out infinite alternate; }
+        @keyframes logo-float { 0% { transform: translateY(0px); } 100% { transform: translateY(-10px); } }
+        .capa-title { font-family: var(--font-headings-cover); font-weight: 900; text-align: center; margin-bottom: 1em; font-size: clamp(1.2rem, 2.8vw, 1.8rem); line-height: 1.4; text-transform: uppercase; letter-spacing: 0.08em; color: var(--aa-dark-blue); }
+        html[data-theme='dark'] .capa-title { color: var(--aa-green-text-dark-theme); }
+        .capa-title-line { display: block; }
+        .frase-destaque { font-family: var(--font-headings-cover); font-size: clamp(0.9rem, 1.8vw, 1.3rem); font-weight: 800; background: rgba(255,255,255,0.2); backdrop-filter: blur(3px); border: 1px solid rgba(255,255,255,0.3); border-radius: var(--radius-lg); padding: 0.5em 1em; margin-bottom: 1rem; }
+        html[data-theme='dark'] .frase-destaque { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.1); }
+        .capa-criado { font-family: var(--font-body-cover); font-size: 0.85rem; color: var(--aa-dark-blue); opacity: 0.9; margin-top: 1.5rem; margin-bottom: 1.5rem; font-weight: 600; }
+        html[data-theme='dark'] .capa-criado { color: #E2E8F0; }
+        .capa-criado .creator-name { font-weight: 800; background: linear-gradient(45deg, var(--aa-green) 20%, var(--aa-green-lighter) 50%, var(--arremaq-orange) 80%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-fill-color: transparent; }
+        html[data-theme='dark'] .capa-criado .creator-name { background: linear-gradient(45deg, var(--aa-green-text-dark-theme) 20%, var(--aa-green) 50%, var(--arremaq-orange-text-dark-theme) 80%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; text-fill-color: transparent; }
+        .btn-iniciar { display: inline-flex; align-items: center; gap: 0.8em; font-family: var(--font-headings-cover); font-size: 1.1rem; font-weight: bold; padding: 0.8em 2em; background-image: linear-gradient(45deg, var(--aa-green-darker) 0%, var(--aa-green) 50%, var(--aa-green-darker) 100%); background-size: 250% auto; color: var(--aa-white); border: none; border-radius: var(--radius-full); cursor: pointer; box-shadow: 0 6px 16px rgba(16, 185, 129, 0.4); transition: all 0.5s cubic-bezier(.17,.67,.83,.67); text-transform: uppercase; letter-spacing: 0.1em; }
+        .btn-iniciar:hover { background-position: right center; transform: scale(1.1) translateY(-5px); box-shadow: 0 8px 20px rgba(16, 185, 129, 0.6); }
+
+        /* Estilos Seção Menu, Trilha e Conteúdo */
+        .playbook-sub-section { padding: clamp(2rem, 8vw, 4rem) clamp(1rem, 5vw, 2rem); min-height: 100vh; }
+        #arremaq-content-section { background: var(--arremaq-orange-pastel); }
+        html[data-theme='dark'] #arremaq-content-section { background: #1c1200; }
+        .playbook-content-title { font-family: var(--font-headings-portal); font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 800; color: var(--text-headings-light-portal); text-align: center; margin-bottom: 2rem; text-transform: uppercase; }
+        html[data-theme='dark'] .playbook-content-title { color: var(--text-headings-dark-portal); }
+        html[data-theme='dark'] #arremaq-content-section .playbook-content-title { color: var(--text-headings-dark-arremaq); }
+        .btn-voltar-secao { display: inline-flex; align-items: center; font-family: var(--font-headings-cover); font-weight: 600; padding: 0.6rem 1.2rem; border-radius: var(--radius-button-portal); text-decoration: none; transition: all var(--transition-main); border: 2px solid var(--aa-green); color: var(--aa-green-darker); font-size: 0.8rem; text-transform: uppercase; }
+        .btn-voltar-secao:hover { background-color: var(--aa-green-lighter); transform: translateY(-2px); }
+        html[data-theme='dark'] .btn-voltar-secao { border-color: var(--aa-green-lighter); color: var(--aa-green-lighter); }
+        html[data-theme='dark'] .btn-voltar-secao:hover { background-color: var(--aa-green-darker); }
+        
+        /* Card Genérico (usado na Trilha, Jornada, Aceleração) */
+        .content-card-base { background-color: var(--bg-content-light-portal); border: 1px solid var(--border-color-light-portal); border-radius: var(--radius-xl); padding: 1.5rem; box-shadow: var(--shadow-lg); transition: all var(--transition-main); color: inherit; }
+        .content-card-base:hover { transform: translateY(-5px) scale(1.02); box-shadow: var(--shadow-xl); border-color: var(--aa-green); }
+        html[data-theme='dark'] .content-card-base { background-color: var(--bg-content-dark-portal); border-color: var(--border-color-dark-portal); }
+        html[data-theme='dark'] .content-card-base:hover { border-color: var(--aa-green-lighter); }
+        .content-card-base h3 { font-family: var(--font-headings-portal); color: var(--aa-green-darker); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        html[data-theme='dark'] .content-card-base h3 { color: var(--aa-green-text-dark-theme); }
+        .content-card-base p { font-size: 0.8rem; line-height: 1.5; color: var(--text-body-light-portal); }
+        html[data-theme='dark'] .content-card-base p { color: var(--text-body-dark-portal); }
+        .content-card-base .details-prompt { font-size: 0.75rem; color: var(--arremaq-orange-darker); font-weight: 600; display: inline-block; margin-top: 0.5rem; }
+        html[data-theme='dark'] .content-card-base .details-prompt { color: var(--arremaq-orange-text-dark-theme); }
+        
+        /* Estilos Jornada do Cliente */
+        .organograma-wrapper { display: flex; flex-direction: column; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1.5rem; background-color: rgba(255,255,255,0.5); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); }
+        html[data-theme='dark'] .organograma-wrapper { background-color: rgba(0,0,0,0.2); }
+        .flow-node { background-color: var(--aa-white); padding: 1rem 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); text-align: center; font-weight: 600; color: var(--aa-dark-blue); border: 1px solid var(--border-color-light-portal); }
+        html[data-theme='dark'] .flow-node { background-color: var(--aa-dark-blue-lighter); color: var(--aa-green-lighter); border-color: var(--border-color-dark-portal); }
+        .flow-node.start-node { border-color: var(--aa-green); background-color: var(--aa-green-lighter); }
+        .flow-node.end-node { border-color: var(--arremaq-orange); background-color: var(--arremaq-orange-lighter); }
+        .jornada-explicacao { background-color: rgba(255,255,255,0.7); backdrop-filter: blur(5px); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); padding: 2rem; margin-bottom: 3rem; text-align: center; max-width: 900px; margin-left: auto; margin-right: auto; }
+        html[data-theme='dark'] .jornada-explicacao { background-color: rgba(0,0,0,0.3); }
+
+        /* Estilos Aceleração Tática */
+        .font-sora { font-family: 'Sora', sans-serif; }
+        .text-autoarremate { color: #10B981; } .bg-autoarremate { background-color: #10B981; }
+        .text-arremaq { color: #F97316; } .bg-arremaq { background-color: #F97316; }
+        .category-tab.active { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+        .view-tab { transition: all 0.3s ease-in-out; border-radius: 0.75rem; }
+        .view-tab.active { background-color: #0284c7; color: white; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.1); }
+        .persona-clickable-card { cursor: pointer; transition: all 0.3s ease-in-out; }
+        .persona-clickable-card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-xl); }
+        
+        /* Controles de Acessibilidade e Tema */
+        .accessibility-controls { position: fixed; top: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1001; }
+        .accessibility-btn, .theme-toggle-button { border-radius: var(--radius-full); width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; cursor: pointer; box-shadow: var(--shadow-md); transition: all var(--transition-main); }
+        .accessibility-btn { background-color: var(--bg-content-light-portal); color: var(--text-headings-light-portal); border: 1px solid var(--border-color-light-portal); }
+        .accessibility-btn:hover { transform: scale(1.1); color: var(--aa-green); box-shadow: var(--shadow-lg), var(--shadow-glow-green); }
+        html[data-theme='dark'] .accessibility-btn { background-color: var(--bg-content-dark-portal); color: var(--text-headings-dark-portal); border-color: var(--border-color-dark-portal); }
+        .theme-toggle-button { position: fixed; bottom: 25px; right: 25px; z-index: 1000; background: linear-gradient(135deg, var(--aa-dark-blue) 0%, #2C3E50 100%); color: var(--aa-white); }
+        html[data-theme='dark'] .theme-toggle-button { background: linear-gradient(135deg, var(--aa-green-text-dark-theme) 0%, var(--aa-green) 100%); color: var(--aa-dark-blue); }
+        
+        /* Modal de IA */
+        #ai-modal-overlay.hidden { display: none; }
+        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #0284c7; animation: spin 1s ease infinite; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+    <div class="accessibility-controls">
+        <button id="increaseFontBtn" class="accessibility-btn" aria-label="Aumentar tamanho da fonte" title="Aumentar Fonte"><i class="fas fa-search-plus"></i></button>
+        <button id="decreaseFontBtn" class="accessibility-btn" aria-label="Diminuir tamanho da fonte" title="Diminuir Fonte"><i class="fas fa-search-minus"></i></button>
+        <button id="readPageBtn" class="accessibility-btn" aria-label="Ler página em voz alta" title="Ler Página"><i class="fas fa-volume-up"></i></button>
+    </div>
+
+    <main id="main-portal-completo">
+        <!-- Seção da Capa -->
+        <section id="capa-section" class="capa-section" data-aos="fade-in" data-aos-duration="1000">
+            <div class="logos-container">
+                <img src="https://www.autoarremate.com.br/wp-content/uploads/2022/09/logo-horizontal-padrao.svg" alt="Logotipo da Auto Arremate" class="playbook-logo" data-aos="zoom-in" data-aos-delay="200">
+                <img src="https://www.arremaq.com.br/wp-content/uploads/2021/01/Logotipo-Arremaqsuperbid.png" alt="Logotipo da Arremaq" class="playbook-logo" data-aos="zoom-in" data-aos-delay="300">
+            </div>
+            <h1 class="capa-title" data-aos="fade-up" data-aos-delay="400">
+                <span class="capa-title-line"><span class="emoji-original-color">🎓</span> TRILHA DE APRENDIZADO <span class="emoji-original-color">🚀</span></span>
+                <span class="capa-title-line"><span class="text-aa-green-darker">AUTO ARREMATE</span> & <span class="text-arremaq-orange-darker">ARREMAQ</span></span>
+            </h1>
+            <p class="frase-destaque" data-aos="fade-up" data-aos-delay="600">
+                <span class="emoji-original-color">🚀</span> SÓ OS FORTES ACELERAM, MAS APENAS OS SÁBIOS DOMINAM A ARTE DE FREAR! <span class="emoji-original-color">🛑</span>
+            </p>
+            <p class="capa-criado" data-aos="fade-up" data-aos-delay="900">
+                <span class="emoji-original-color">✨</span> CRIADO PELO <span class="emoji-original-color">👨‍💻</span> ANALISTA DE OPERAÇÕES - <strong class="creator-name">MARCELO DO NASCIMENTO</strong> <span class="emoji-original-color">🚀</span>
+            </p>
+            <button id="btnIniciarCapa" class="btn-iniciar" data-aos="fade-up" data-aos-delay="1000">
+                EMBARCAR NA TRILHA!
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </button>
+        </section>
+
+        <!-- Seção de Menu Principal -->
+        <section id="menu-principal-section" class="playbook-sub-section hidden" data-aos="fade-in">
+            <h2 class="playbook-content-title">
+                <span class="emoji-original-color">🚦</span> CENTRAL DE COMANDO <span class="emoji-original-color">🛠️</span>
+            </h2>
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <p>Selecione seu destino para iniciar a jornada de conhecimento. Cada módulo é um passo crucial para dominar nossas operações.</p>
+            </div>
+            <div class="max-w-xl mx-auto">
+                <div id="openTrilhaAprendizadoBtn" class="content-card-base text-center cursor-pointer">
+                    <h3 class="text-2xl"><span class="emoji-original-color">🎓</span> Iniciar Trilha de Aprendizado</h3>
+                    <p class="mt-2">Acesse todos os módulos, playbooks e guias estratégicos para uma performance campeã.</p>
+                    <span class="details-prompt mt-4">Começar Agora <i class="fas fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button id="backToCoverBtnMenu" class="btn-voltar-secao"><i class="fas fa-arrow-left"></i> Voltar à Capa</button>
+            </div>
+        </section>
+
+        <!-- Seção da Trilha de Aprendizado (Índice dos Módulos) -->
+        <section id="trilha-aprendizado-section" class="playbook-sub-section hidden" data-aos="fade-in">
+            <button class="btn-voltar-secao backToMenuPrincipalBtn"><i class="fas fa-arrow-left"></i> Voltar ao Menu</button>
+            <h2 class="playbook-content-title">
+                <span class="emoji-original-color">🎓</span> TRILHA DE APRENDIZADO: GUIA ESTRATÉGICO <span class="emoji-original-color">🏆</span>
+            </h2>
+            <div id="trilhaIndexContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Cards dos módulos serão injetados aqui pelo JS -->
+            </div>
+        </section>
+
+        <!-- MÓDULOS DE CONTEÚDO -->
+
+        <!-- MÓDULO 1: Pista de Decolagem -->
+        <section id="pista-decolagem-section" class="playbook-sub-section hidden" data-aos="fade-in">
+             <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+             <!-- Conteúdo detalhado de Pista de Decolagem de 1.html -->
+             <div class="container mx-auto px-4"><!-- Conteúdo de 1.html vai aqui --></div>
+        </section>
+
+        <!-- MÓDULO 2: Auto Arremate -->
+        <section id="auto-arremate-content-section" class="playbook-sub-section hidden" data-aos="fade-in">
+             <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+             <!-- Conteúdo detalhado de Auto Arremate de 1.html -->
+             <div class="container mx-auto"><!-- Conteúdo de 1.html vai aqui --></div>
+        </section>
+        
+        <!-- MÓDULO 3: Arremaq -->
+        <section id="arremaq-content-section" class="playbook-sub-section hidden" data-aos="fade-in">
+             <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+             <!-- Conteúdo detalhado de Arremaq de 1.html -->
+             <div class="container mx-auto"><!-- Conteúdo de 1.html vai aqui --></div>
+        </section>
+        
+        <!-- MÓDULO 4: Mapeando Campeões -->
+        <section id="mapeando-campeoes-section" class="playbook-sub-section hidden" data-aos="fade-in">
+            <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+            <!-- Conteúdo detalhado de Mapeando Campeões de 1.html -->
+            <div class="container mx-auto"><!-- Conteúdo de 1.html vai aqui --></div>
+        </section>
+
+        <!-- MÓDULO 5: Jornada do Cliente -->
+        <section id="jornada-cliente-aa-content-section" class="playbook-sub-section hidden" data-aos="fade-in">
+            <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+            <h2 class="playbook-content-title">
+                <span class="emoji-original-color">🗺️</span> PORTAL DA JORNADA DO CLIENTE VENDEDOR
+            </h2>
+            <div class="jornada-explicacao mb-12">
+                <p><span class="emoji-original-color">🌟</span> Bem-vindo ao seu guia mestre para a Jornada do Cliente Vendedor! Compreender cada etapa é fundamental para o nosso sucesso mútuo.</p>
+                <p><span class="emoji-original-color">📊</span> Abaixo, você encontrará os principais tipos de jornadas que gerenciamos. Cada card representa um fluxo estratégico.</p>
+            </div>
+            <div id="jornadaClienteCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- Cards das jornadas serão injetados aqui pelo JS -->
+            </div>
+        </section>
+        <!-- Sub-seções da Jornada do Cliente -->
+        <section id="inbound30-content-main" class="hidden playbook-sub-section" data-aos="fade-up">
+            <button class="btn-voltar-secao backToJornadaIndexBtn"><i class="fas fa-arrow-left"></i> Voltar</button>
+            <h2 class="playbook-content-title">Jornada via INBOUND (0-30 Dias)</h2>
+            <div class="organograma-wrapper"><!-- Conteúdo do organograma de inbound 30 dias de JORNADA DO CLIENTE.html --></div>
+        </section>
+        <!-- Outras seções de jornada (outbound30, inbound60, etc.) viriam aqui -->
+
+        <!-- MÓDULO 6: Aceleração Tática -->
+        <section id="aceleracao-tatica-total-section" class="playbook-sub-section hidden" data-aos="fade-in">
+            <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+            <header class="text-center mb-8">
+                <h1 class="font-sora text-4xl md:text-5xl font-extrabold text-stone-900 dark:text-white">🚀 Aceleração Tática Total 🚀</h1>
+                <p class="text-stone-600 dark:text-stone-300 mt-3 text-lg max-w-3xl mx-auto">Seu centro de comando para conectar, qualificar e converter.</p>
+            </header>
+             <nav class="bg-white/70 dark:bg-slate-800/70 backdrop-blur-lg p-3 rounded-xl shadow-md mb-8 flex flex-col sm:flex-row justify-center items-center gap-3" id="persona-category-nav">
+                <h2 class="text-lg font-semibold text-stone-700 dark:text-stone-200 mr-4 hidden md:block">Categorias:</h2>
+                <button data-category="autoarremate_brand" class="category-tab w-full sm:w-auto font-bold py-3 px-5 rounded-xl"><i class="fas fa-car-side mr-2"></i>Auto Arremate</button>
+                <button data-category="arremaq_brand" class="category-tab w-full sm:w-auto font-bold py-3 px-5 rounded-xl"><i class="fas fa-tractor mr-2"></i>Arremaq</button>
+            </nav>
+            <main id="content-area-aceleracao" class="w-full">
+                <!-- Conteúdo da aceleração tática será renderizado aqui pelo JS -->
+            </main>
+        </section>
+
+        <!-- Placeholder para módulos restantes -->
+        <section id="placeholder-content-section" class="playbook-sub-section hidden">
+            <button class="btn-voltar-secao backToTrilhaAprendizadoBtn"><i class="fas fa-arrow-left"></i> Voltar à Trilha</button>
+            <h2 id="content-title-placeholder" class="playbook-content-title">Módulo em Construção</h2>
+            <p id="content-paragraph-placeholder" class="text-lg text-center">O conteúdo completo deste módulo está sendo preparado e estará disponível em breve.</p>
+        </section>
+    </main>
+
+    <button id="themeToggleBtn" class="theme-toggle-button" aria-label="Alternar tema" title="Alternar Tema"><i class="fas fa-moon"></i></button>
+    
+    <!-- Modal para o Assistente de IA -->
+    <div id="ai-modal-overlay" class="fixed inset-0 bg-black bg-opacity-60 hidden justify-center items-center p-4 z-50">
+        <div id="ai-modal" class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-3xl max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b dark:border-slate-700">
+                <h3 class="font-sora text-xl font-bold text-sky-800 dark:text-sky-400" id="ai-modal-title">✨ Assistente de Vendas IA</h3>
+                <button id="ai-modal-close" class="text-stone-500 hover:text-stone-800 dark:text-slate-400 dark:hover:text-white text-2xl">&times;</button>
+            </div>
+            <div class="p-6 flex-grow overflow-y-auto"><!-- Conteúdo do Modal aqui --></div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const app = {
+            state: { currentModuleId: null, aceleracaoTaticaInitialized: false, activeAceleracaoCategory: 'autoarremate_brand' },
+            dom: {
+                mainPortal: document.getElementById('main-portal-completo'),
+                allSections: document.querySelectorAll('#main-portal-completo > section'),
+                trilhaIndexContainer: document.getElementById('trilhaIndexContainer'),
+                jornadaClienteCardsContainer: document.getElementById('jornadaClienteCardsContainer'),
+                aceleracaoContentArea: document.getElementById('content-area-aceleracao'),
+                aceleracaoNav: document.getElementById('persona-category-nav'),
+                htmlEl: document.documentElement,
+                themeToggleBtn: document.getElementById('themeToggleBtn'),
+            },
+            data: {
+                indexDataTrilha: [
+                    { emoji: "📜", title: "NOSSA PISTA DE DECOLAGEM", sub: "Cultura, missão e o time de campeões.", contentId: "pista-decolagem-section" },
+                    { emoji: "🚗", title: "AUTO ARREMATE NA POLE POSITION", sub: "Dominando o universo dos veículos leves.", contentId: "auto-arremate-content-section" },
+                    { emoji: "🚜", title: "ARREMAQ", sub: "A força bruta dos gigantes do agro.", contentId: "arremaq-content-section" },
+                    { emoji: "🎯", title: "MAPEANDO OS CAMPEÕES", sub: "Nossos Clientes Ideais (ICPs & Personas).", contentId: "mapeando-campeoes-section" },
+                    { emoji: "🗺️", title: "JORNADA DO CLIENTE VENDEDOR", sub: "Visualize o fluxo do cliente.", contentId: "jornada-cliente-aa-content-section" },
+                    { emoji: "🚀", title: "ACELERAÇÃO TÁTICA TOTAL", sub: "Playbook de estratégias e conversão.", contentId: "aceleracao-tatica-total-section" },
+                    { emoji: "✍️", title: "A ARTE DA COMUNICAÇÃO", sub: "Modelos que convertem.", contentId: "arte-comunicacao-section" },
+                    { emoji: "📖", title: "DICIONÁRIO DOS MESTRES", sub: "Glossário Auto Arremate & Arremaq.", contentId: "dicionario-mestres-section" },
+                    { emoji: "📈", title: "EVOLUÇÃO CONTÍNUA", sub: "Nosso playbook em aperfeiçoamento.", contentId: "evolucao-continua-section" },
+                    { emoji: "📞", title: "CENTRAL DE COMANDO", sub: "Canais de contato e suporte.", contentId: "central-comando-section" },
+                ],
+                journeysDataForPlaybook: [ /* Dados de JORNADA DO CLIENTE.html */ ],
+                playbookData: { /* Dados de ACELERAÇÃO TÁTICA TOTAL.html */ },
+            },
+            methods: {
+                initialize() {
+                    AOS.init({ duration: 700, once: true, offset: 50 });
+                    this.setupEventListeners();
+                    this.setupTheme();
+                    this.showSection('capa-section');
+                    // Simular carregamento de dados complexos
+                    if (Object.keys(app.data.playbookData).length === 0) {
+                        console.warn("Dados do Playbook Tático (playbookData) não carregados.");
+                    }
+                },
+                showSection(sectionId) {
+                    app.dom.allSections.forEach(s => s.classList.add('hidden'));
+                    const targetSection = document.getElementById(sectionId);
+
+                    if (targetSection) {
+                        targetSection.classList.remove('hidden');
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        app.state.currentModuleId = sectionId;
+
+                        switch (sectionId) {
+                            case 'trilha-aprendizado-section': this.renderTrilhaIndex(); break;
+                            case 'jornada-cliente-aa-content-section': this.renderJornadaClienteCards(); break;
+                            case 'aceleracao-tatica-total-section':
+                                if (!app.state.aceleracaoTaticaInitialized) {
+                                    this.initializeAceleracaoTatica();
+                                    app.state.aceleracaoTaticaInitialized = true;
+                                }
+                                break;
+                        }
+                        AOS.refreshHard();
+                    } else {
+                        console.error(`Seção com ID "${sectionId}" não encontrada.`);
+                        const placeholder = document.getElementById('placeholder-content-section');
+                        if (placeholder) {
+                             document.getElementById('content-title-placeholder').innerText = 'Erro';
+                             document.getElementById('content-paragraph-placeholder').innerText = `Módulo com ID "${sectionId}" não encontrado.`;
+                             placeholder.classList.remove('hidden');
+                        }
+                    }
+                },
+                renderTrilhaIndex() {
+                    app.dom.trilhaIndexContainer.innerHTML = app.data.indexDataTrilha.map(item => `
+                        <div class="content-card-base text-center cursor-pointer" data-content-id="${item.contentId}">
+                            <h3><span class="emoji-original-color">${item.emoji}</span> ${item.title}</h3>
+                            <p>${item.sub}</p>
+                            <span class="details-prompt mt-4">Explorar Módulo <i class="fas fa-arrow-right ml-1"></i></span>
+                        </div>
+                    `).join('');
+                },
+                renderJornadaClienteCards() {
+                    // Lógica para renderizar os cards da jornada do cliente
+                },
+                initializeAceleracaoTatica() {
+                    // Lógica para inicializar os eventos e a renderização da aceleração tática
+                },
+                setupEventListeners() {
+                    document.getElementById('btnIniciarCapa').addEventListener('click', () => this.showSection('menu-principal-section'));
+                    document.getElementById('openTrilhaAprendizadoBtn').addEventListener('click', () => this.showSection('trilha-aprendizado-section'));
+                    document.getElementById('backToCoverBtnMenu').addEventListener('click', () => this.showSection('capa-section'));
+                    
+                    app.dom.mainPortal.addEventListener('click', (e) => {
+                        const backToMenuBtn = e.target.closest('.backToMenuPrincipalBtn');
+                        const backToTrilhaBtn = e.target.closest('.backToTrilhaAprendizadoBtn');
+                        const backToJornadaIndexBtn = e.target.closest('.backToJornadaIndexBtn');
+                        const trilhaCard = e.target.closest('#trilhaIndexContainer .content-card-base');
+                        const jornadaCard = e.target.closest('#jornadaClienteCardsContainer .content-card-base');
+                        
+                        if (backToMenuBtn) this.showSection('menu-principal-section');
+                        else if (backToTrilhaBtn) this.showSection('trilha-aprendizado-section');
+                        else if (backToJornadaIndexBtn) this.showSection('jornada-cliente-aa-content-section');
+                        else if (trilhaCard) this.showSection(trilhaCard.dataset.contentId);
+                        else if (jornadaCard) this.showSection(jornadaCard.dataset.contentId);
+                    });
+                    
+                    app.dom.themeToggleBtn.addEventListener('click', () => {
+                        const newTheme = app.dom.htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                        this.applyTheme(newTheme);
+                        localStorage.setItem('theme', newTheme);
+                    });
+                },
+                setupTheme() {
+                    const storedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                    this.applyTheme(storedTheme);
+                },
+                applyTheme(theme) {
+                    app.dom.htmlEl.setAttribute('data-theme', theme);
+                    app.dom.themeToggleBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                }
+            }
+        };
+        app.methods.initialize();
+    });
+    </script>
+</body>
+</html>
